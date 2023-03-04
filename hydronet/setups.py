@@ -358,7 +358,7 @@ class Dataset:
             object_h, object_w = image_mask.shape[0], image_mask.shape[1]
             background_image = np.random.choice(self.background_images)
             background_image_mask = backgrounds[background_image]
-            print(background_image_mask.shape)
+            # print(background_image_mask.shape)
             
             self.cond_mask[index,:] = 1-(1-self.cond_mask[index,:])*(1-background_image_mask)
             self.cond_mask[index,:,(object_y-object_h//2):(object_y-object_h//2+object_h),(object_x-object_w//2):(object_x-object_w//2+object_w)] = 1-(1-self.cond_mask[index,:,(object_y-object_h//2):(object_y-object_h//2+object_h),(object_x-object_w//2):(object_x-object_w//2+object_w)])*(1-image_mask)
